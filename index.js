@@ -1,5 +1,9 @@
 // An object should be added to the store upon being initialized.
-let store = { drivers: [], passengers: [], trips: [] };
+let store = {
+  drivers: [],
+  passengers: [],
+  trips: []
+};
 
 // Driver class
 // A driver has many trips, and has many passengers through trips.
@@ -13,7 +17,18 @@ class Driver {
   }
 
   // trips() - returns all of the trips that a driver has taken
+  trips() {
+    return store.trips.filter(trip => {
+      return trip.driverId == this.id;
+    });
+  }
+
   // passengers() - returns all of the passengers that a driver has taken on a trip
+  passengers() {
+    return this.trips().map(trip => {
+      return trip.passenger();
+    });
+  }
 }
 
 
@@ -29,7 +44,17 @@ class Passenger {
   }
 
   // trips() - returns all of the trips that a passenger has taken
+  trips() {
+    return store.trips.filter(trip => {
+      return trip.passengerId == this.id;
+    });
+  }
   // drivers() - returns all of the drivers that has taken a passenger on a trip
+  drivers() {
+    return this.trips().map(trip => {
+      return trip.driver();
+    });
+  }
 }
 
 
@@ -46,5 +71,16 @@ class Trip {
   }
 
   // driver() - returns the driver associated with the trip
+  driver() {
+    return store.drivers.find(driver => {
+      return driver.id === this.driverId;
+    });
+  }
+
   // passenger() - returns the passenger associated with the trip
+  passenger() {
+    return store.passengers.find(passenger => {
+      return passenger.id === this.passengerId;
+    });
+  }
 }
