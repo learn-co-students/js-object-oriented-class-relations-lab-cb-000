@@ -9,7 +9,7 @@ class Driver {
   constructor (id, name) {
     this.id = driverId++;
     this.name = name;
-    store.drivers.push(this);
+    store.drivers.push(this); // add object to store upon being initialized
   }
 
   // trips() - returns all of the trips that a driver has taken
@@ -18,11 +18,19 @@ class Driver {
 
 
 // Passenger class
-
 // A passenger has many trips, and has many drivers through trips.
 // new Passenger() - initialized with a name; returns a JavaScript object that has attributes of id, and name
-// trips() - returns all of the trips that a passenger has taken
-// drivers() - returns all of the drivers that has taken a passenger on a trip
+let passengerId = 0;
+class Passenger (
+  constructor (id, name) {
+    this.id = passengerId++;
+    this.name = name;
+    store.passengers.push(this); // add object to store upon being initialized
+  }
+
+  // trips() - returns all of the trips that a passenger has taken
+  // drivers() - returns all of the drivers that has taken a passenger on a trip
+)
 
 
 // Trip class
