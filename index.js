@@ -22,7 +22,6 @@ class Driver {
       return trip.passenger();
     });
   }
-
 }
 
 class Passenger {
@@ -43,7 +42,6 @@ class Passenger {
       return trip.driver();
     });
   }
-
 }
 
 class Trip {
